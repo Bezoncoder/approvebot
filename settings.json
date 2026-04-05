@@ -1,0 +1,56 @@
+{
+  "bot_token": "",
+  "admin_id": ,
+  "db": {
+    "host": "127.0.0.1",
+    "user": "postgres",
+    "password": "",
+    "database": "users_data"
+  },
+  "campaign": [
+    {
+      "chat_id": -1002099033081,
+      "posts": [
+        {
+          "delay": 10,
+          "path_media": "./сontent/photo_2024-05-18_08-48-08.jpg",
+          "post_text": "Проверяем вашу заявку...",
+          "inline_buttons": [
+            {
+              "text_button": "СМОТРЕТЬ \uD83D\uDC40",
+              "url_button": "https://t.me/+v9JQOMpRyy80NjZi"
+            }
+          ]
+        },
+        {
+          "delay": 20,
+          "path_media": "./сontent/photo_2024-05-18_08-48-08.jpg",
+          "post_text": "Мы не уверены, что вы человек. Подтвердите, что вы не БОТ нажав кнопку ниже.",
+          "text_buttons": [
+            {
+              "text_button": "Я человек"
+            },
+            {
+              "text_button": "DICE"
+            },
+            {
+              "text_button": "DART"
+            },
+            {
+              "text_button": "BASKETBALL"
+            },
+            {
+              "text_button": "FOOTBALL"
+            },
+            {
+              "text_button": "SLOT_MACHINE"
+            },
+            {
+              "text_button": "BOWLING"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

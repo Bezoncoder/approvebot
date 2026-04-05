@@ -1,0 +1,381 @@
+2024-05-03 17:58:50,584 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 17:58:54,670 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 17:59:04,645 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 17:59:14,646 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 17:59:15,765 - [ERROR] - root - (main.py).start(42) - [Exception] - HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+Traceback (most recent call last):
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "C:\python311-64\Lib\asyncio\base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\python311-64\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\windows_events.py", line 846, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\windows_events.py", line 633, in finish_connect
+    ov.getresult()
+OSError: [WinError 121] Превышен таймаут семафора
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 170, in make_request
+    async with session.post(
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiohttp\connector.py", line 1033, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\PycharmProjects\avtobot\main.py", line 40, in start
+    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 526, in start_polling
+    await self.emit_startup(bot=bots[-1], **workflow_data)
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 256, in emit_startup
+    await self.startup.trigger(*args, **kwargs)
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\event\event.py", line 42, in trigger
+    await handler.call(*args, **kwargs)
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\main.py", line 17, in start_bot
+    await bot.send_message(chat_id=config.admin_id, text='Бот запущен!')
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\client\bot.py", line 2869, in send_message
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\client\bot.py", line 508, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+2024-05-03 17:59:43,271 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 17:59:47,335 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 17:59:51,715 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 17:59:51,908 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 17:59:57,342 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:00:07,347 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:00:17,357 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:00:27,374 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:00:37,377 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:00:47,389 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:00:57,393 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:01:07,385 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:01:17,391 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:01:27,391 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:01:28,535 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 18:05:58,614 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 18:06:02,668 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:06:03,449 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 18:06:03,450 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 18:06:03,666 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 18:06:04,550 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(359) - Polling stopped for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 18:24:36,598 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 18:24:40,671 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:24:41,489 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 18:24:41,693 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 18:24:44,735 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 18:25:08,995 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 18:25:13,046 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:25:13,764 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 18:25:13,991 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 18:25:23,061 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:25:33,063 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:25:43,111 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:25:53,105 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:29:56,398 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 18:30:00,460 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:30:01,354 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 18:30:01,591 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 18:30:10,464 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:30:14,940 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 18:30:20,479 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 18:30:21,065 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(359) - Polling stopped for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:26:11,850 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 20:26:15,910 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:26:16,808 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 20:26:16,992 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:26:25,943 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:26:35,916 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:26:45,948 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:26:55,991 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:27:06,581 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:27:15,985 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:27:15,987 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 20:30:22,979 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 20:30:27,049 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:30:27,818 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 20:30:28,024 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:30:37,048 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:30:47,035 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:30:57,253 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:31:07,035 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:31:17,048 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:31:27,277 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:31:37,084 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:31:47,281 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:31:57,096 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:32:07,088 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:32:17,120 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:32:27,110 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:32:37,216 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:32:47,203 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:32:57,364 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:33:07,140 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:33:17,132 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:33:27,184 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:33:37,186 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:33:47,176 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:33:57,176 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:34:01,975 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745200 is not handled. Duration 4047 ms by bot id=7017668872
+2024-05-03 20:34:01,976 - [ERROR] - aiogram.event - (dispatcher.py)._process_update(315) - Cause exception while process update id=972745200 by bot id=7017668872
+ConnectionError: Error 22 connecting to localhost:6379. 22.
+Traceback (most recent call last):
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\connection.py", line 274, in connect
+    await self.retry.call_with_retry(
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\retry.py", line 59, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\connection.py", line 681, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\base_events.py", line 1090, in create_connection
+    raise exceptions[0]
+  File "C:\python311-64\Lib\asyncio\base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\python311-64\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\windows_events.py", line 846, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python311-64\Lib\asyncio\windows_events.py", line 633, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 49, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    data.update({"state": context, "raw_state": await context.get_state()})
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\fsm\context.py", line 15, in get_state
+    return await self.storage.get_state(key=self.key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\aiogram\fsm\storage\redis.py", line 171, in get_state
+    value = await self.redis.get(redis_key)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\client.py", line 607, in execute_command
+    conn = self.connection or await pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\connection.py", line 1083, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\connection.py", line 1116, in ensure_connection
+    await connection.connect()
+  File "C:\Users\PC\PycharmProjects\avtobot\venv\Lib\site-packages\redis\asyncio\connection.py", line 282, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. 22.
+2024-05-03 20:34:07,189 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-03 20:40:28,534 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 20:40:29,447 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 20:40:29,631 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:40:45,671 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745201 is not handled. Duration 0 ms by bot id=7017668872
+2024-05-03 20:40:55,392 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745202 is not handled. Duration 0 ms by bot id=7017668872
+2024-05-03 20:41:01,305 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745203 is not handled. Duration 0 ms by bot id=7017668872
+2024-05-03 20:41:47,302 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 20:42:51,589 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 20:43:07,290 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 20:43:07,495 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:43:11,182 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745204 is not handled. Duration 0 ms by bot id=7017668872
+2024-05-03 20:47:18,345 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 20:53:05,460 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 20:53:06,342 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 20:53:06,553 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:53:12,168 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745205 is not handled. Duration 0 ms by bot id=7017668872
+2024-05-03 20:58:12,260 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 20:58:17,916 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 20:58:18,655 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 20:58:18,883 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 20:58:25,577 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745206 is not handled. Duration 0 ms by bot id=7017668872
+2024-05-03 21:23:31,542 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-03 21:23:37,183 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-03 21:23:38,017 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-03 21:23:38,258 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-03 21:23:52,600 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-03 21:23:52,601 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745207 is handled. Duration 765 ms by bot id=7017668872
+2024-05-03 21:29:00,776 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 07:54:26,872 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 07:54:30,961 - [WARNING] - apscheduler.scheduler - (base.py)._process_jobs(965) - Error getting due jobs from job store 'default': Error 10061 connecting to localhost:6379. Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+2024-05-04 07:54:31,753 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 07:54:31,952 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 07:56:12,239 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 07:56:13,058 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 07:56:13,244 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 07:56:29,408 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 07:56:29,409 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745208 is handled. Duration 766 ms by bot id=7017668872
+2024-05-04 07:57:17,032 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 09:07:13,583 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 09:07:14,453 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 09:07:14,716 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 09:07:32,147 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:07:32,149 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745209 is handled. Duration 750 ms by bot id=7017668872
+2024-05-04 09:08:56,363 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 09:10:22,847 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 09:10:23,594 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 09:10:23,808 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 09:10:34,394 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:10:34,395 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745210 is handled. Duration 1141 ms by bot id=7017668872
+2024-05-04 09:19:12,890 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 09:19:18,121 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 09:19:18,847 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 09:19:19,049 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 09:19:39,346 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:19:39,347 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745211 is handled. Duration 656 ms by bot id=7017668872
+2024-05-04 09:25:01,668 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:25:01,669 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745212 is handled. Duration 672 ms by bot id=7017668872
+2024-05-04 09:26:47,211 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 09:50:35,337 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 09:50:36,075 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 09:50:36,260 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 09:51:53,982 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:51:53,984 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:51:53,985 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745214 is handled. Duration 812 ms by bot id=7017668872
+2024-05-04 09:54:26,045 - [ERROR] - aiogram.dispatcher - (dispatcher.py)._listen_updates(219) - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2024-05-04 09:54:26,046 - [WARNING] - aiogram.dispatcher - (dispatcher.py)._listen_updates(221) - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7017668872)
+2024-05-04 09:54:37,695 - [INFO] - aiogram.dispatcher - (dispatcher.py)._listen_updates(233) - Connection established (tryings = 1, bot id = 7017668872)
+2024-05-04 09:54:41,758 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 09:54:41,759 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745215 is handled. Duration 703 ms by bot id=7017668872
+2024-05-04 09:59:09,331 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 10:07:33,576 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 10:07:34,292 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 10:07:34,473 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @ero_check_bot id=7017668872 - 'autocheck_bot'
+2024-05-04 10:08:11,678 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:08:11,681 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:08:11,682 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745216 is handled. Duration 905 ms by bot id=7017668872
+2024-05-04 10:08:23,668 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:08:23,669 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745217 is handled. Duration 344 ms by bot id=7017668872
+2024-05-04 10:14:14,489 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:14:14,492 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:14:14,493 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745218 is handled. Duration 858 ms by bot id=7017668872
+2024-05-04 10:14:19,585 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:14:19,586 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=972745219 is handled. Duration 328 ms by bot id=7017668872
+2024-05-04 10:14:50,838 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 10:21:05,781 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 10:21:06,555 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 10:21:06,756 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @learntest22_bot id=5350334294 - 'EVA'
+2024-05-04 10:21:07,342 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974714 is not handled. Duration 46 ms by bot id=5350334294
+2024-05-04 10:21:07,344 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974713 is not handled. Duration 46 ms by bot id=5350334294
+2024-05-04 10:21:07,345 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974710 is not handled. Duration 62 ms by bot id=5350334294
+2024-05-04 10:21:07,345 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974712 is not handled. Duration 46 ms by bot id=5350334294
+2024-05-04 10:21:07,346 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974711 is not handled. Duration 62 ms by bot id=5350334294
+2024-05-04 10:21:07,347 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974709 is not handled. Duration 62 ms by bot id=5350334294
+2024-05-04 10:21:07,348 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974708 is not handled. Duration 62 ms by bot id=5350334294
+2024-05-04 10:21:07,350 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974706 is not handled. Duration 62 ms by bot id=5350334294
+2024-05-04 10:21:07,351 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974703 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,352 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974707 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,353 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974705 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,354 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974702 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,355 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974704 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,356 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974701 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,357 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974700 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,358 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974699 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,358 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974696 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,358 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974698 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,359 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974697 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,359 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974695 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,360 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974694 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,360 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974692 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,361 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974690 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,361 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974693 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,362 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974691 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,362 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974689 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,363 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974686 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,363 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974688 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,364 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974687 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,364 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974685 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,365 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974683 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,365 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974684 is not handled. Duration 78 ms by bot id=5350334294
+2024-05-04 10:21:07,366 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974682 is not handled. Duration 92 ms by bot id=5350334294
+2024-05-04 10:21:07,367 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974681 is not handled. Duration 92 ms by bot id=5350334294
+2024-05-04 10:21:07,367 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974680 is not handled. Duration 92 ms by bot id=5350334294
+2024-05-04 10:21:07,367 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974679 is not handled. Duration 92 ms by bot id=5350334294
+2024-05-04 10:21:07,368 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974678 is not handled. Duration 92 ms by bot id=5350334294
+2024-05-04 10:21:07,368 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974676 is not handled. Duration 108 ms by bot id=5350334294
+2024-05-04 10:21:07,369 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974677 is not handled. Duration 92 ms by bot id=5350334294
+2024-05-04 10:21:07,369 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974675 is not handled. Duration 108 ms by bot id=5350334294
+2024-05-04 10:21:07,370 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974673 is not handled. Duration 108 ms by bot id=5350334294
+2024-05-04 10:21:07,370 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974674 is not handled. Duration 108 ms by bot id=5350334294
+2024-05-04 10:21:23,404 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 10:21:46,886 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 10:21:47,539 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 10:21:47,715 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @learntest22_bot id=5350334294 - 'EVA'
+2024-05-04 10:22:06,533 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:22:06,536 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:22:06,537 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974715 is handled. Duration 719 ms by bot id=5350334294
+2024-05-04 10:22:15,898 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:22:15,899 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974716 is handled. Duration 312 ms by bot id=5350334294
+2024-05-04 10:22:32,070 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 10:22:32,952 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(359) - Polling stopped for bot @learntest22_bot id=5350334294 - 'EVA'
+2024-05-04 10:24:02,646 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 10:24:03,268 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 10:24:03,457 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @learntest22_bot id=5350334294 - 'EVA'
+2024-05-04 10:24:30,136 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:24:30,139 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:24:30,140 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974717 is handled. Duration 1078 ms by bot id=5350334294
+2024-05-04 10:24:34,300 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:24:34,301 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974718 is handled. Duration 359 ms by bot id=5350334294
+2024-05-04 10:27:27,567 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
+2024-05-04 10:27:32,802 - [INFO] - apscheduler.scheduler - (base.py).start(181) - Scheduler started
+2024-05-04 10:27:33,687 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(527) - Start polling
+2024-05-04 10:27:33,967 - [INFO] - aiogram.dispatcher - (dispatcher.py)._polling(341) - Run polling for bot @learntest22_bot id=5350334294 - 'EVA'
+2024-05-04 10:27:53,775 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:27:53,778 - [INFO] - apscheduler.scheduler - (base.py)._real_add_job(895) - Added job "send_message" to job store "default"
+2024-05-04 10:27:53,779 - [INFO] - aiogram.event - (dispatcher.py).feed_update(172) - Update id=422974719 is handled. Duration 734 ms by bot id=5350334294
+2024-05-04 10:28:09,478 - [INFO] - aiogram.dispatcher - (dispatcher.py).start_polling(554) - Polling stopped
