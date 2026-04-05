@@ -1,1 +1,26 @@
 settings.json
+ get_data_settings/__pycache__/__init__.cpython-312.pyc
+        get_data_settings/__pycache__/get_ads_posts.cpython-312.pyc
+        get_data_settings/__pycache__/get_chat_ids.cpython-312.pyc
+        get_data_settings/__pycache__/get_config.cpython-312.pyc
+        handlers/__pycache__/__init__.cpython-312.pyc
+        handlers/__pycache__/approve_handler.cpython-312.pyc
+        handlers/__pycache__/dice.cpython-312.pyc
+        important/__pycache__/__init__.cpython-312.pyc
+        important/__pycache__/reliability.cpython-312.pyc
+        keyboards/__pycache__/__init__.cpython-312.pyc
+        keyboards/__pycache__/inline.cpython-312.pyc
+        keyboards/__pycache__/reply.cpython-312.pyc
+        middlewares/__pycache__/__init__.cpython-312.pyc
+        middlewares/__pycache__/apschedulermiddleware.cpython-312.pyc
+        middlewares/__pycache__/dbmiddleware.cpython-312.pyc
+        middlewares/__pycache__/throttling.cpython-312.pyc
+        sender/__pycache__/__init__.cpython-312.pyc
+        sender/__pycache__/check_latin.cpython-312.pyc
+        sender/__pycache__/check_link.cpython-312.pyc
+        sender/__pycache__/inline.cpython-312.pyc
+        sender/__pycache__/sender.cpython-312.pyc
+        sender/__pycache__/sender_state.cpython-312.pyc
+        utils/__pycache__/__init__.cpython-312.pyc
+        utils/__pycache__/dbconnect.cpython-312.pyc
+        utils/__pycache__/send_message_telegram.cpython-312.pyc
