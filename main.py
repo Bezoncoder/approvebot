@@ -109,7 +109,7 @@ async def create_db():
 async def start():
     logger.info('Starting bot...')
     bot = Bot(token=config.bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    storage = RedisStorage.from_url('redis://localhost:6379/0')
+    storage = RedisStorage.from_url('redis://localhost:6379/1')
     dp = Dispatcher(storage=storage)
     print(f"Host: {config.db.host}")
     print(f"User: {config.db.user}")
