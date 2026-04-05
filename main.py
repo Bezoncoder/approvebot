@@ -46,26 +46,64 @@ async def create_db():
     print(f"User: {config.db.user}")
     print(f"Password: {config.db.password}")
     print(f"Database: {config.db.database}")
-    conn = psycopg.connect(f'host={config.db.host} port=5432 user={config.db.user}'
-                           f'password = {config.db.password} connect_timeout=10')
+
+    # Подключаемся к базе postgres (должна существовать на сервере)
+    conninfo = (
+        f"host={config.db.host} "
+        f"port=5432 "
+        f"dbname=postgres "
+        f"user={config.db.user} "
+        f"password={config.db.password} "
+        f"connect_timeout=10"
+    )
+    conn = psycopg.connect(conninfo)
     conn.autocommit = True
     curs = conn.cursor()
+
     try:
-        curs.execute(f'CREATE DATABASE {config.db.database} WITH OWNER = {config.db.user} ENCODING = \'UTF8\'')
+        curs.execute(
+            "SELECT 1 FROM pg_database WHERE datname = %s", (config.db.database,)
+        )
+        exists = curs.fetchone() is not None
     except Exception as exc:
-        logging.error(f"[!!! Exception] - {exc}", exc_info=True)
-    finally:
-        conn.close()
-        curs.close()
+        logging.error(
+            f"[!!! Exception when checking DB existence] - {exc}", exc_info=True
+        )
+        exists = False
+
+    if not exists:
+        try:
+            curs.execute(
+                f'CREATE DATABASE {config.db.database} '
+                f'WITH OWNER = {config.db.user} ENCODING = \'UTF8\''
+            )
+        except psycopg.errors.DuplicateDatabase:
+            pass  # игнорируем, если база появилась параллельно
+        except Exception as exc:
+            logging.error(f"[!!! Exception] - {exc}", exc_info=True)
+
+    curs.close()
+    conn.close()
+
     print(f"Host: {config.db.host}")
     print(f"User: {config.db.user}")
     print(f"Password: {config.db.password}")
     print(f"Database: {config.db.database}")
-    connect = f"host={config.db.host} port = 5432 dbname={config.db.database} user = {config.db.user}" \
-              f"password={config.db.password} connect_timeout=10"
+
+    # Подключаемся уже к базе approve_bot и создаём таблицу users
+    connect = (
+        f"host={config.db.host} "
+        f"port=5432 "
+        f"dbname={config.db.database} "
+        f"user={config.db.user} "
+        f"password={config.db.password} "
+        f"connect_timeout=10"
+    )
     async with await psycopg.AsyncConnection.connect(conninfo=connect, autocommit=True) as conn:
         async with conn.cursor() as curs:
-            await curs.execute(""" CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY);""")
+            await curs.execute(
+                """CREATE TABLE IF NOT EXISTS users (user_id BIGINT PRIMARY KEY);"""
+            )
 
 
 async def start():
@@ -87,7 +125,7 @@ async def start():
     pooling.connection_class.autocommit = True
     job_stores = {'default': RedisJobStore(jobs_key='dispatched_trips_jobs', run_times_key='dispatched_trips_running',
                                            host='localhost', db=2, port=6379)}
-    apscheduler = ContextSchedulerDecorator(AsyncIOScheduler(timezone='Asia/Vladivostok', jobstores=job_stores))
+    apscheduler = ContextSchedulerDecorator(AsyncIOScheduler(timezone='Europe/Moscow', jobstores=job_stores))
     apscheduler.ctx.add_instance(instance=bot, declared_class=Bot)
     apscheduler.ctx.add_instance(instance=apscheduler, declared_class=AsyncIOScheduler)
     apscheduler.start()
@@ -118,13 +156,32 @@ async def start():
         await pooling.close()
 
 
+# if __name__ == '__main__':
+#     if sys.platform == "win32":
+#         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+#         console_handler = logging.StreamHandler()
+#         file_handler = RotatingFileHandler('bot_logging.log', maxBytes=500000, backupCount=1)
+#         logging.basicConfig(level=logging.INFO, handlers=[file_handler, console_handler],
+#                             format="%(asctime)s - [%(levelname)s] - %(name)s - "
+#                                    "(%(filename)s).%(funcName)s(%(lineno)d) - %(message)s")
+#     with contextlib.suppress(KeyboardInterrupt, SystemExit):
+#         asyncio.run(start())
+
+
 if __name__ == '__main__':
+    console_handler = logging.StreamHandler()
+    file_handler = RotatingFileHandler('bot_logging.log', maxBytes=500000, backupCount=1)
+    logging.basicConfig(
+        level=logging.INFO,
+        handlers=[file_handler, console_handler],
+        format="%(asctime)s - [%(levelname)s] - %(name)s - "
+               "(%(filename)s).%(funcName)s(%(lineno)d) - %(message)s"
+    )
+
+    # asyncio.run(create_db())
+
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-        console_handler = logging.StreamHandler()
-        file_handler = RotatingFileHandler('bot_logging.log', maxBytes=500000, backupCount=1)
-        logging.basicConfig(level=logging.INFO, handlers=[file_handler, console_handler],
-                            format="%(asctime)s - [%(levelname)s] - %(name)s - "
-                                   "(%(filename)s).%(funcName)s(%(lineno)d) - %(message)s")
+
     with contextlib.suppress(KeyboardInterrupt, SystemExit):
         asyncio.run(start())
